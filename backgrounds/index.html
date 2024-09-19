@@ -6,53 +6,36 @@
     <title>Document</title>
   </head>
   <body>
-    <section
-      rv-class-selected="model.selected"
-      data-module="backgrounds"
-      rv-on-click="model.click"
-      class="backgrounds"
-    >
-      <div rv-html="model.description" class="desc"></div>
-      <div class="select-group">
 
-        <!-- Added an id -->
+  <!-- HTML FOR BACKGROUND - I added an id -->
+    
+      <div class="select-group">
         <div class="select" id="selectCollection">
           <select rv-set_selected="model.collection">
-            <option rv-each-cat="model.collection" rv-value="cat.id">
-              {cat.title}
-            </option>
+            <option rv-each-cat="model.collection" rv-value="cat.id">{cat.title}</option>
           </select>
         </div>
       </div>
-    </section>
+
+
+<!-- HTML FOR TEXT, I added an id  -->
+      <div rv-show="model.collection | length_is_gt_1" class="select-group">
+        <div class="select" id="textSelection">
+          <select rv-set_selected="model.collection">
+            <option rv-each-cat="model.collection" rv-value="cat.id">{cat.title}</option>
+          </select>
+        </div>
+      </div>
+
+<!-- HTML FOR PICTURES, I added an id  -->
+
+      <div class="select-group">
+        <div class="select" id="pictureSelection">
+          <select rv-set_selected="model.collection">
+            <option rv-each-cat="model.collection" rv-value="cat.id">{cat.title}</option>
+          </select>
+        </div>
+     </div>
   </body>
 
-  <script>
-
-    // Used this method to fine the id with the ID and then find the elements inside it
-
-    const selectCollection = document.querySelector("#selectCollection select");
-
-   
-    // This function is to sort the options alphabetically
-      function sortModelCollection() {    
-      
-       // Used the spread operator to convert the options into an array
-         const sortedOptions = [...selectCollection.options];
-
-       // Sorts the options based on the title
-       sortedOptions.sort((a, b) => a.textContent.localeCompare(b.textContent));
-
-       // Clears the current options
-         selectCollection.innerHTML = "";
-          
-       // Appends sorted options           
-         sortedOptions.forEach((option) => selectCollection.appendChild(option));
-       
-      }
-   
-       // Add event listener to the parent container
-       selectCollection.addEventListener("click", sortModelCollection);
-
-  </script>
 </html>
