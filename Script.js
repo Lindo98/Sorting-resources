@@ -16,12 +16,6 @@
        sortedBackground.sort((a, b) => a.textContent.localeCompare(b.textContent));
        sortedText.sort((a, b) => a.textContent.localeCompare(b.textContent));
        sortedPictures.sort((a, b) => a.textContent.localeCompare(b.textContent));
-
-       
-       // Clears the current options
-         sortBackground.innerHTML = "";
-         sortText.innerHTML = "";
-         sortPictures.innerHTML = "";
           
        // Appends sorted options           
          sortedBackground.forEach((option) => sortBackground.appendChild(option));
